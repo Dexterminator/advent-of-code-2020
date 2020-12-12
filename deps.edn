@@ -1,2 +1,3 @@
-{:deps {medley/medley {:mvn/version "1.3.0"}
-        org.clojure/math.combinatorics {:mvn/version "0.1.6"}}}
+{:deps {medley/medley                  {:mvn/version "1.3.0"}
+        org.clojure/math.combinatorics {:mvn/version "0.1.6"}
+        net.mikera/core.matrix         {:mvn/version "0.62.0"}}}
