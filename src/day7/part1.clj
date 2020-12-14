@@ -24,17 +24,3 @@
      (map dfs)
      (filter #(contains? % "shiny gold"))
      (count))
-
-(defn part2 []
-  (let [graph (->> adapters
-                   (partition-all 4 1)
-                   (map (fn [[x & xs]] [x (vec (remove #(< 3 (- % x)) xs))]))
-                   (into {}))
-        vs (reverse adapters)
-        goal (first vs)]
-    (loop [[v & vs] (rest vs)
-           v->count {goal 1}]
-      (let [n (apply + (map v->count (get graph v)))]
-        (if (seq vs)
-          (recur vs (assoc v->count v n))
-          n)))))
