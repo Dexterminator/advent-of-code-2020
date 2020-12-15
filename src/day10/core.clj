@@ -12,7 +12,6 @@
                    (add-device)
                    (cons 0)
                    (sort)))
-
 ;; Part 1
 (defn part1 []
   (let [freqs (->> adapters
@@ -34,3 +33,6 @@
         (if (seq vs)
           (recur vs (assoc v->count v n))
           n)))))
+
+(println (part1))
+(println (part2))
