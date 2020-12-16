@@ -12,6 +12,7 @@
                    (add-device)
                    (cons 0)
                    (sort)))
+
 ;; Part 1
 (defn part1 []
   (let [freqs (->> adapters

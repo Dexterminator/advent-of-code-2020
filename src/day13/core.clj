@@ -19,20 +19,19 @@
 
 (println (part1))
 
-(defn ts-seq [ts to-drop]
-  (map #(*' ts %) (drop to-drop (range))))
+(defn ts-seq [ts]
+  (map #(*' ts %) (range)))
 
 (defn part2 []
-  (let [ids (->> input
-                 (re-seq #"\d+|x")
-                 (rest)
-                 (indexed)
-                 (remove #(= "x" (second %)))
-                 (map (fn [[i n]] [i (Integer. n)]))
-                 (sort-by second >))]
-    ids
-    #_(find-first
-        #(every? (fn [[i n]] (= i (- n (mod % n)))) ids)
-        (ts-seq first-ts (quot 100000000000000 first-ts)))))
+  (let [[first-ts & ids] (->> input
+                              (re-seq #"\d+|x")
+                              (rest)
+                              (indexed)
+                              (remove #(= "x" (second %)))
+                              (map (fn [[i n]] [i (Integer. n)]))
+                              (sort-by second >))]
+    (find-first
+      #(every? (fn [[i n]] (= i (- n (mod % n)))) ids)
+      (ts-seq first-ts))))
 
 (println (part2))
